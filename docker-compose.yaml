@@ -7,5 +7,20 @@ services:
       - "15672:15672"
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
+
+  dotnet_publisher:
+    build:
+      context: ./dotnet_publisher
+      dockerfile: Dockerfile
+    depends_on:
+      - rabbitmq
+
+  dotnet_consumer:
+    build:
+      context: ./dotnet_consumer
+      dockerfile: Dockerfile
+    depends_on:
+      - rabbitmq
+
 volumes:
   rabbitmq_data:
