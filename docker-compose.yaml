@@ -10,15 +10,15 @@ services:
 
   dotnet_publisher:
     build:
-      context: ./dotnet_publisher
-      dockerfile: Dockerfile
+      context: ./
+      dockerfile: dotnet_publisher/Dockerfile
     depends_on:
       - rabbitmq
 
   dotnet_consumer:
     build:
-      context: ./dotnet_consumer
-      dockerfile: Dockerfile
+      context: ./
+      dockerfile: dotnet_consumer/Dockerfile
     depends_on:
       - rabbitmq
 

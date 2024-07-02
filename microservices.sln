@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnet_publisher", "dotnet_
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnet_consumer", "dotnet_consumer\dotnet_consumer.csproj", "{06DFA864-9FE6-4295-8C8C-8B7D1656C9E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet_rabbitmq", "dotnet_rabbitmq\dotnet_rabbitmq.csproj", "{58024E82-E250-4AE3-BD12-C9695105EACE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{06DFA864-9FE6-4295-8C8C-8B7D1656C9E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06DFA864-9FE6-4295-8C8C-8B7D1656C9E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06DFA864-9FE6-4295-8C8C-8B7D1656C9E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58024E82-E250-4AE3-BD12-C9695105EACE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58024E82-E250-4AE3-BD12-C9695105EACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58024E82-E250-4AE3-BD12-C9695105EACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58024E82-E250-4AE3-BD12-C9695105EACE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
