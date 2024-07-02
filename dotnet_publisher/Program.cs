@@ -2,6 +2,11 @@
 
 using var messageBroker = new MessageBroker();
 
-var payload = new Payload(DateTime.Now, 42);
-var message = payload.ToJson();
-messageBroker.Publish(message);
+for (int i = 0; i < 25; i++)
+{
+    var payload = new Payload(DateTime.Now, i);
+    var message = payload.ToJson();
+    messageBroker.Publish(message);
+    var delay = new Random().Next(100, 500);
+    Thread.Sleep(delay);
+}

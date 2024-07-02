@@ -8,7 +8,7 @@ public class MessageBroker : IDisposable
 {
     readonly IConnection connection;
     readonly IModel channel;
-    readonly Dictionary<Action<string>, string> consumerTags = [];
+    readonly Dictionary<Action<string, Action>, string> consumerTags = [];
 
     public MessageBroker()
     {
@@ -21,6 +21,8 @@ public class MessageBroker : IDisposable
                             exclusive: false,
                             autoDelete: false,
                             arguments: null);
+        
+        // channel.BasicQos(prefetchSize: 0, prefetchCount: 3, global: false);
     }
 
     public void Publish(string message)
@@ -35,7 +37,7 @@ public class MessageBroker : IDisposable
         Console.WriteLine($"[x] Sent {message}");
     }
 
-    public event Action<string> MessageReceived
+    public event Action<string, Action> MessageReceived
     {
         add
         {
@@ -44,11 +46,11 @@ public class MessageBroker : IDisposable
             {
                 var body = ea.Body.ToArray();
                 var message = Encoding.UTF8.GetString(body);
-                value(message);
+                value(message, ()=>channel.BasicAck(ea.DeliveryTag, false));
             };
 
             var consumerTag = channel.BasicConsume(queue: "hello",
-                                                    autoAck: true,
+                                                    autoAck: false,
                                                     consumer: consumer);
             consumerTags.Add(value, consumerTag);
         }

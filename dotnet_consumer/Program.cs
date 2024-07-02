@@ -11,17 +11,19 @@ Console.CancelKeyPress += (sender, eArgs) => {
     eArgs.Cancel = true;
 };
 
-void OnMessageReceived(string message)
+void OnMessageReceived(string message, Action ack)
 {
     Console.WriteLine($"[x] Processing {message}");
-    Task.Run(()=>HandleMessageAsync(message));
+    Task.Run(()=>HandleMessageAsync(message, ack));
 }
 
-async Task HandleMessageAsync(string message)
+async Task HandleMessageAsync(string message, Action ack)
 {
-    await Task.Delay(5000);
+    var delay = new Random().Next(1000, 5000);
+    await Task.Delay(delay);
     var payload = new Payload(message);
     Console.WriteLine($"[x] Received {payload}");
+    ack.Invoke();
 }
 
 // Instead of waiting for Console.ReadLine, wait on the quitEvent.
