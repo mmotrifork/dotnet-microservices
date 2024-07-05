@@ -4,7 +4,7 @@ using RabbitMQ.Client.Events;
 
 namespace dotnet_rabbitmq;
 
-public class MessageBroker : IDisposable
+public class MessageBroker : IMessageBroker
 {
     readonly IConnection connection;
     readonly IModel channel;

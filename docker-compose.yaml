@@ -2,6 +2,11 @@ services:
   rabbitmq:
     image: rabbitmq:3-management
     container_name: rabbitmq
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 10s
+      timeout: 10s
+      retries: 10
     ports:
       - "5672:5672"
       - "15672:15672"
@@ -13,14 +18,57 @@ services:
       context: ./
       dockerfile: dotnet_publisher/Dockerfile
     depends_on:
-      - rabbitmq
+      rabbitmq:
+        condition: service_healthy
 
   dotnet_consumer:
     build:
       context: ./
       dockerfile: dotnet_consumer/Dockerfile
     depends_on:
-      - rabbitmq
+      rabbitmq:
+        condition: service_healthy
+      db.dotnet_consumer:
+        condition: service_healthy
+  
+  db.dotnet_consumer:
+    image: postgres
+    restart: always
+    container_name: db.dotnet_consumer
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+      PGUSER: postgres
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data
+    
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    container_name: pgadmin
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+      - ./servers.json:/pgadmin4/servers.json
+    depends_on:
+      db.dotnet_consumer:
+        condition: service_healthy
+    environment:
+      PGADMIN_DEFAULT_EMAIL: mmo@trifork.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_LISTEN_PORT: 80
+      SERVERS_FILE: /pgadmin4/servers.json
 
 volumes:
   rabbitmq_data:
+  postgresql_data:
+  pgadmin:

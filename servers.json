@@ -1,0 +1,15 @@
+{
+    "Servers": {
+        "1": {
+            "Name": "PostgreSQL",
+            "Group": "Servers",
+            "Host": "db.dotnet_consumer",
+            "Port": 5432,
+            "Username": "postgres",
+            "Password": "postgres",
+            "MaintenanceDB": "postgres",
+            "SSLMode": "prefer",
+            "Comment": "Primary Database"
+        }
+    }
+}
