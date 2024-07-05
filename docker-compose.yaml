@@ -30,6 +30,11 @@ services:
         condition: service_healthy
       db.dotnet_consumer:
         condition: service_healthy
+    environment:
+      DB_HOST: db.dotnet_consumer
+      DB_NAME: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres
   
   db.dotnet_consumer:
     image: postgres
