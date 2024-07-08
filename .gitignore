@@ -5,3 +5,5 @@
 packages/
 
 .DS_Store
+pgadmin/.pgpass
+pgadmin/servers.json
