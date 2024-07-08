@@ -3,11 +3,11 @@
         "1": {
             "Name": "PostgreSQL",
             "Group": "Servers",
-            "Host": "db.dotnet_consumer",
+            "Host": "${POSTGRES_HOST}",
             "Port": 5432,
-            "Username": "postgres",
-            "Password": "postgres",
-            "MaintenanceDB": "postgres",
+            "Username": "${POSTGRES_USER}",
+            "Passfile": "../../.pgpass",
+            "MaintenanceDB": "${POSTGRES_DB}",
             "SSLMode": "prefer",
             "Comment": "Primary Database"
         }

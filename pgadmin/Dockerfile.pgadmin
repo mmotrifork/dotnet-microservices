@@ -1,0 +1,6 @@
+FROM dpage/pgadmin4
+
+# Install gettext to get envsubst
+USER root
+RUN apk add --no-cache gettext
+USER pgadmin
