@@ -68,7 +68,7 @@ services:
       - ./pgadmin/servers.json.template:/pgadmin4/servers.json.template
       - ./pgadmin/servers.json:/pgadmin4/servers.json
       - ./pgadmin/pgpass.template:/pgadmin4/pgpass.template
-      - ./pgadmin/pgpass:/pgadmin4/pgpass
+      - ./pgadmin/.pgpass:/pgadmin4/.pgpass
       - ./pgadmin/init-pgadmin.sh:/init-pgadmin.sh
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
