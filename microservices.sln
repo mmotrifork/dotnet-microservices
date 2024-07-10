@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet_consumer.tests", "do
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet_rabbitmq.tests", "dotnet_rabbitmq.tests\dotnet_rabbitmq.tests.csproj", "{AC553DED-B201-4808-AC47-0168A4BE95B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gateway", "gateway\gateway.csproj", "{84335C9E-1918-4855-97A6-D033809B1DF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{AC553DED-B201-4808-AC47-0168A4BE95B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC553DED-B201-4808-AC47-0168A4BE95B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC553DED-B201-4808-AC47-0168A4BE95B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84335C9E-1918-4855-97A6-D033809B1DF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84335C9E-1918-4855-97A6-D033809B1DF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84335C9E-1918-4855-97A6-D033809B1DF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84335C9E-1918-4855-97A6-D033809B1DF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

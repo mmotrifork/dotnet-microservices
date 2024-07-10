@@ -1,0 +1,59 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  dotnet_consumer:
+    build:
+      context: "/Users/mm/microservices"
+      dockerfile: "dotnet_consumer/Dockerfile"
+      target: "build"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/dotnet_consumer.dll"
+    environment:
+      DOTNET_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "dotnet_consumer:dev"
+    ports: []
+    volumes:
+    - "/Users/mm/.nuget/packages:/root/.nuget/packages"
+    - "/Users/mm/microservices/dotnet_consumer:/app:rw"
+    - "/Users/mm/microservices:/src:rw"
+    working_dir: "/app"
+  dotnet_publisher:
+    build:
+      context: "/Users/mm/microservices"
+      dockerfile: "dotnet_publisher/Dockerfile"
+      target: "build"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/dotnet_publisher.dll"
+    environment:
+      DOTNET_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "dotnet_publisher:dev"
+    ports: []
+    volumes:
+    - "/Users/mm/.nuget/packages:/root/.nuget/packages"
+    - "/Users/mm/microservices/dotnet_publisher:/app:rw"
+    - "/Users/mm/microservices:/src:rw"
+    working_dir: "/app"
+  gateway:
+    build:
+      context: "/Users/mm/microservices"
+      dockerfile: "gateway/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/gateway.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "gateway:dev"
+    ports: []
+    volumes:
+    - "/Users/mm/.nuget/packages:/home/app/.nuget/packages"
+    - "/Users/mm/microservices/gateway:/app:rw"
+    - "/Users/mm/microservices:/src:rw"
+    working_dir: "/app"
